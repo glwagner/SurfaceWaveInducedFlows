@@ -1,6 +1,5 @@
 using Oceananigans
 using Oceananigans.Units
-using GLMakie
 using Printf
 
 ϵ = 0.3
@@ -109,6 +108,12 @@ simulation.output_writers[:xz] = JLD2OutputWriter(model, outputs;
                                                   overwrite_existing = true)
 
 run!(simulation)
+
+#####
+##### Visualization
+#####
+
+using GLMakie
 
 uxyt = FieldTimeSeries(prefix * "_xy.jld2", "u")
 wxyt = FieldTimeSeries(prefix * "_xy.jld2", "w")
